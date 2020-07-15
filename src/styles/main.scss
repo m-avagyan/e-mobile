@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+//Colors
+
+$cl1: #191919;
+$cl2: #696969;
+$cl3: #ff6347;
+
+//Borders & transitions & animations
+
+$tr: .15s linear;
+$bd: 1px solid #eee;
+
+@keyframes drop{
+    0% {}
+    100% {top: 89px;}
+}
+
+@keyframes click-slide {
+    0%{opacity: .25;}
+    100%{opacity: 1;}
+}
+
+@mixin scrollbar {
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: #eee;
+        border-radius: 20px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #ccc; 
+        border-radius: 20px;
+        transition: $tr;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #999; 
+    }
+}
+
+//Layout
+
+$c: center;
+$r: row;
+$col: column;
+$sa: space-around;
+$sb: space-between;
+
+@mixin flex($dr, $ai, $jc) {
+    display: flex;
+    flex-direction: $dr;
+    align-items: $ai;
+    justify-content: $jc;
+}
+
+//Links mixin
+
+@mixin link {
+    text-decoration: none;
+    transition: $tr;
+}
+
+//Main styles & classes
+
+html {
+    scroll-behavior: smooth;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, form, .btn {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    animation: click-slide .5s 1 linear forwards;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn {
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: $tr;
+    svg {
+        width: inherit;
+        @include flex($r, $c, $c);
+    }
+}
+
+.inp {
+    border: $bd;
+    outline: none;
+    background: transparent;
+    transition: $tr;
+    padding: 0 25px;
+    &:focus {
+        border-color: $cl1;
+    }
+}
+
+.container {
+    width: 1440px;
+    margin: 0 auto;
+    padding: 56px 15px;
+}
+
+@media (max-width: 1440px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 48px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 36px 15px;
+    }
+}
